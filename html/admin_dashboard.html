@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/unified_dashboard_css.css">
+    <script src="../js/auth_check.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Administrator Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#user-management">User Management</a></li>
+                <li><a href="#course-management">Course Management</a></li>
+                <li><a href="#system-reports">System Reports</a></li>
+                <li><a href="#settings">Settings</a></li>
+                <li><a href="/Lab%203%20assignment%20(3)/Lab_assignment_4/php/logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Statistics Overview -->
+        <section id="overview">
+            <h2>System Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3><?php echo $stats['total_users']; ?></h3>
+                    <p>Total Users</p>
+                </div>
+                <div class="stat-card">
+                    <h3><?php echo $stats['active_courses']; ?></h3>
+                    <p>Active Courses</p>
+                </div>
+                <div class="stat-card">
+                    <h3><?php echo $stats['faculty_count']; ?></h3>
+                    <p>Faculty Members</p>
+                </div>
+                <div class="stat-card">
+                    <h3><?php echo $stats['student_count']; ?></h3>
+                    <p>Students</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Management Section -->
+        <section id="user-management">
+            <h2>User Management</h2>
+            <div class="content-box">
+                <a href="../php/add_user.php"><button class="success">Add New User</button></a>
+                <button class="secondary">Import Users</button>
+                <button class="secondary">Export User List</button>
+                
+                <div class="mt-20">
+                    <h3 style="margin-bottom: 15px; color: #555;">Recent Users</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while($user = mysqli_fetch_assoc($users_result)): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($user['first_name'] . ' ' . $user['last_name']); ?></td>
+                                <td><?php echo htmlspecialchars($user['email']); ?></td>
+                                <td><span class="badge badge-info"><?php echo ucfirst($user['role']); ?></span></td>
+                                <td>
+                                    <span class="status-indicator status-<?php echo $user['status']; ?>"></span>
+                                    <?php echo ucfirst($user['status']); ?>
+                                </td>
+                                <td>
+                                    <a href="../php/edit_user.php?id=<?php echo $user['id']; ?>">
+                                        <button style="padding: 6px 12px; margin: 0;">Edit</button>
+                                    </a>
+                                    <a href="../php/delete_user.php?id=<?php echo $user['id']; ?>" onclick="return confirm('Are you sure?')">
+                                        <button class="danger" style="padding: 6px 12px; margin: 0;">Delete</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Management Section -->
+        <section id="course-management">
+            <h2>Course Management</h2>
+            <div class="content-box">
+                <a href="../php/createC.php"><button class="success">Create New Course</button></a>
+                <a href="../php/assign_faculty.php"><button class="secondary">Assign Faculty</button></a>
+                <button class="secondary">Course Archive</button>
+                
+                <div class="mt-20">
+                    <h3 style="margin-bottom: 15px; color: #555;">Active Courses</h3>
+                    <?php while($course = mysqli_fetch_assoc($courses_result)): ?>
+                    <div class="card">
+                        <div class="flex justify-between align-center">
+                            <div>
+                                <h3><?php echo htmlspecialchars($course['course_name']); ?></h3>
+                                <p>Instructor: <?php echo htmlspecialchars($course['instructor_name']); ?> | 
+                                   Students: <?php echo $course['student_count']; ?> | 
+                                   Code: <?php echo htmlspecialchars($course['course_code']); ?></p>
+                            </div>
+                            <div>
+                                <button style="padding: 8px 16px; margin: 0 5px;">View</button>
+                                <a href="../php/edit_course.php?id=<?php echo $course['id']; ?>">
+                                    <button class="secondary" style="padding: 8px 16px; margin: 0 5px;">Edit</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endwhile; ?>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Reports Section -->
+        <section id="system-reports">
+            <h2>System Reports</h2>
+            <div class="content-box">
+                <a href="generate_reports.php?type=attendance"><button>Generate Attendance Report</button></a>
+                <a href="generate_reports.php?type=performance"><button>Generate Performance Report</button></a>
+                <a href="generate_reports.php?type=activity"><button>Generate Activity Log</button></a>
+                <button class="secondary">Custom Report</button>
+                
+                <div class="mt-20">
+                    <div class="alert alert-info">
+                        <strong>Recent Activity:</strong> System backup completed successfully.
+                    </div>
+                    <div class="alert alert-success">
+                        <strong>Database Status:</strong> All systems operational.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

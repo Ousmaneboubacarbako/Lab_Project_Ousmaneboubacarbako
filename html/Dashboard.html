@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/unified_dashboard_css.css">
+    <script src="../js/auth_check.js"></script>
+</head>
+<body>
+    <header>
+    <h1>Faculty Intern Dashboard </h1>
+    <nav>
+        <ul>
+            <li><a href="#Courses">My Courses</a></li>
+            <li><a href="#Sessions">Sessions</a></li>
+            <li><a href="#Attendance">Mark Attendance</a></li>
+            <li><a href="#Students">Students</a></li>
+            <li><a href="/Lab%203%20assignment%20(3)/Lab_assignment_4/php/logout.php">Logout</a></li>
+        </ul>
+    </nav>
+    </header>
+
+    <main>
+        <section id="overview">
+            <h2>Quick Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="courseCount">0</h3>
+                    <p>My Courses</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="sessionCount">0</h3>
+                    <p>Upcoming Sessions</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="Courses">
+            <h2>My Assigned Courses</h2>
+            <div class="content-box" id="course-list">
+                <div class="alert alert-info">Loading courses...</div>
+            </div>
+        </section>
+        
+        <section id="Sessions">
+            <h2>Upcoming Sessions</h2>
+            <div class="content-box" id="session-list">
+                <div class="alert alert-info">Loading sessions...</div>
+            </div>
+        </section>
+        
+        <section id="Attendance">
+            <h2>Mark Attendance</h2>
+            <div class="content-box">
+                <p>Select a session from the list above to mark attendance for students.</p>
+            </div>
+        </section>
+        
+        <section id="Students">
+            <h2>Student Overview</h2>
+            <div class="content-box" id="student-data">
+                <div class="alert alert-info">Select a course to view enrolled students.</div>
+            </div>
+        </section>
+    </main>
+    <script src="../js/FacultyD.js"></script>
+</body>
+</html>

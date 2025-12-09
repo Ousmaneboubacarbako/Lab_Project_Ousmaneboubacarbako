@@ -1,0 +1,129 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: url("../media/Ashesic pic.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Login Form Wrapper */
+.form-wrapper {
+  max-width: 450px;
+  width: 100%;
+  margin: 0 auto;
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.form-title {
+  font-size: 38px;
+  color: #fbfbfb;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Input Groups */
+.input-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #fffefe;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 15px;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #f8f9ff;
+}
+
+/* Hints */
+.hint {
+  font-size: 12px;
+  color: #f7f6f6;
+  margin-top: 4px;
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #d43939a2 0%, #d1444b 100%);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(234, 133, 102, 0.4);
+}
+
+/* Link text */
+.link-text {
+  text-align: center;
+  margin-top: 20px;
+  color: #e9e2e2;
+}
+
+.link-text a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link-text a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-wrapper {
+    padding: 20px;
+  }
+
+  .form-title {
+    font-size: 24px;
+  }
+}

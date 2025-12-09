@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Login page </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name ="viewport" content="width=device-width,initial-scale =1.0">
+    <link rel="stylesheet" href="../css/Login.css">
+    <script src="../js/auth_check.js"></script>
+    <title>Login Form in HTML and CSS</title>
+    
+    <body>
+        <div id="login" class="content">
+      <div class="form-wrapper">
+        <h2 class="form-title">Welcome Back</h2>
+        <form id="loginForm">
+          <div class="input-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" placeholder="your.email@example.com" required>
+          </div>
+
+          <div class="input-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+          </div>
+
+          <div class="input-group" style="display: flex; align-items: center; gap: 8px;">
+            <input type="checkbox" id="remember" style="width: auto;">
+            <label for="remember" style="margin: 0; font-weight: normal;">Remember me</label>
+          </div>
+
+          <button type="submit" class="btn">Login</button>
+
+          <div class="link-text">
+            <p>Don't have an account? <a href="/Lab%203%20assignment%20(3)/Lab_assignment_4/html/Sign%20Up.html">Sign up here</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+        <script>
+            // On page load, populate fields if remembered
+  window.onload = function () {
+    const rememberedEmail = localStorage.getItem("rememberedEmail");
+    const rememberedPassword = localStorage.getItem("rememberedPassword");
+
+    if (rememberedEmail) {
+      document.getElementById("loginEmail").value = rememberedEmail;
+      document.getElementById("remember").checked = true;
+    }
+
+    if (rememberedPassword) {
+      document.getElementById("loginPassword").value = rememberedPassword;
+    }
+  };
+
+  // On form submit, store or clear credentials
+  document.querySelector("form").addEventListener("submit", function (e) {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+    const remember = document.getElementById("remember").checked;
+
+    if (remember) {
+      localStorage.setItem("rememberedEmail", email);
+      localStorage.setItem("rememberedPassword", password); // Optional: avoid storing passwords in plain text
+    } else {
+      localStorage.removeItem("rememberedEmail");
+      localStorage.removeItem("rememberedPassword");
+    }
+  });
+        </script>
+      <script src="../js/login.js"></script>
+    </body>
+</html> 

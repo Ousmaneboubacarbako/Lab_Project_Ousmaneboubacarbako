@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.32/sweetalert2.all.min.js"></script>
+  <link rel="stylesheet" href="../css/Sign Up.css">
+  <script src="../js/auth_check.js"></script>
+</head>
+<body>
+  <div id="signup" class="content active">
+      <div class="form-wrapper">
+        <h2 class="form-title">Create Your Account</h2>
+        <form id="signupForm">
+          <div class="input-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="John" required>
+            <div class="hint">Only letters, spaces, hyphens, and apostrophes</div>
+          </div>
+
+          <div class="input-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Doe" required>
+            <div class="hint">Only letters, spaces, hyphens, and apostrophes</div>
+          </div>
+
+          <div class="input-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="john.doe@example.com" required>
+          </div>
+
+          <div class="input-group">
+            <label for="role">Select Role</label>
+            <select id="role" required>
+              <option value="">Choose your role</option>
+              <option value="student">Student</option>
+              <option value="faculty">Faculty</option>
+              <option value="fi">Faculty Intern</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter password" required>
+            <div class="hint">Minimum 8 characters</div>
+          </div>
+
+          <div class="input-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Re-enter password" required>
+          </div>
+
+          <button type="submit" class="btn">Register</button>
+
+          <div class="link-text">
+            <p>Already have an account? <a href="Login.html">Login here</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  <!--<script>
+    // Sign Up Form Handler
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const role = document.getElementById('role').value;
+
+      if (!role) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Missing Role',
+          text: 'Please select a role',
+          confirmButtonColor: '#667eea'
+        });
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Passwords Don\'t Match',
+          text: 'Please ensure both passwords are identical',
+          confirmButtonColor: '#d33'
+        });
+        return;
+      }
+
+      if (password.length < 8) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Weak Password',
+          text: 'Password must be at least 8 characters',
+          confirmButtonColor: '#f39c12'
+        });
+        return;
+      }
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Registration Successful!',
+        html: `Welcome, <strong>${firstName} ${lastName}</strong>!<br>Your ${role} account has been created.`,
+        confirmButtonColor: '#667eea',
+        confirmButtonText: 'Go to Login'
+      }).then(() => {
+        document.getElementById('signupForm').reset();
+        showTab('login');
+        document.getElementById('loginEmail').value = email;
+        document.getElementById('loginRole').value = role;
+      });
+    });
+
+    // Login Form Handler
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const role = document.getElementById('loginRole').value;
+
+      if (!role) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Missing Role',
+          text: 'Please select your role',
+          confirmButtonColor: '#667eea'
+        });
+        return;
+      }
+
+      currentUser = {
+        email: email,
+        role: role,
+        name: email.split('@')[0]
+      };
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Login Successful!',
+        html: `Welcome back, <strong>${currentUser.name}</strong>!`,
+        confirmButtonColor: '#667eea',
+        timer: 2000,
+        timerProgressBar: true
+      }).then(() => {
+        let dashboardTab;
+        switch(role) {
+          case 'student':
+            dashboardTab = 'student-dash';
+            document.getElementById('studentName').textContent = currentUser.name;
+            break;
+          case 'faculty':
+            dashboardTab = 'faculty-dash';
+            document.getElementById('facultyName').textContent = currentUser.name;
+            break;
+          case 'fi':
+            dashboardTab = 'fi-dash';
+            document.getElementById('fiName').textContent = currentUser.name;
+            break;
+        }
+        showTab(dashboardTab);
+      });
+    });
+  </script>-->
+  <script src="../js/Sign Up.js"></script>
+</body>
+</html>
