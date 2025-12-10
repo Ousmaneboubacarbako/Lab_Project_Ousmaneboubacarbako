@@ -33,14 +33,14 @@ async function checkAuth() {
         
         if (!data.authenticated) {
             // Not logged in - redirect to login
-            window.location.href = '/Lab 3 assignment (3)/Lab 3 assignment/html/Login.html';
+            window.location.href = '/Lab%203%20assignment%20(3)/Lab_assignment_4/html/Login.html';
             return null;
         }
         
         return data.user;
     } catch (error) {
         console.error('Auth check failed:', error);
-        window.location.href = '/Lab 3 assignment (3)/Lab 3 assignment/html/Login.html';
+        window.location.href = '/Lab%203%20assignment%20(3)/Lab_assignment_4/html/Login.html';
         return null;
     }
 }
@@ -101,7 +101,7 @@ function redirectToUserDashboard(role) {
     if (dashboardMap[role]) {
         window.location.href = dashboardMap[role];
     } else {
-        window.location.href = '/Lab 3 assignment (3)/Lab 3 assignment/html/Login.html';
+        window.location.href = '/Lab%203%20assignment%20(3)/Lab_assignment_4/html/Login.html';
     }
 }
 
@@ -110,7 +110,7 @@ async function checkIfAlreadyLoggedIn() {
     const currentPage = window.location.pathname.split('/').pop();
     
     // Only check on login/signup pages
-    if (currentPage === 'Login.html' || currentPage === 'Sign Up.html') {
+    if (currentPage === 'Login.html' || currentPage === 'SignUp.html') {
         try {
             // Add small delay to avoid interfering with login redirect
             await new Promise(resolve => setTimeout(resolve, 100));
@@ -141,7 +141,7 @@ if (document.readyState === 'loading') {
         const currentPage = window.location.pathname.split('/').pop();
         
         // Check if already logged in (for login/signup pages)
-        if (currentPage === 'Login.html' || currentPage === 'Sign Up.html') {
+        if (currentPage === 'Login.html' || currentPage === 'SignUp.html') {
             checkIfAlreadyLoggedIn();
         } else {
             // Check access for protected pages
@@ -151,7 +151,7 @@ if (document.readyState === 'loading') {
 } else {
     const currentPage = window.location.pathname.split('/').pop();
     
-    if (currentPage === 'Login.html' || currentPage === 'Sign Up.html') {
+    if (currentPage === 'Login.html' || currentPage === 'SignUp.html') {
         checkIfAlreadyLoggedIn();
     } else {
         checkPageAccess();
